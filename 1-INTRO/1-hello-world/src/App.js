@@ -6,6 +6,7 @@ function App() {
     <div className="App">
       <h1>Olá, mundo!</h1>
       <p>Minha primeira aplicação em React!</p>
+      <h2>Primeira modificação em react</h2>
     </div>
   );
 }
