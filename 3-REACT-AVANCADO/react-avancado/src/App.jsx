@@ -3,12 +3,13 @@ import './App.css'
 
 /* COMPONENTS */
 import ManageData from '../components/ManageData'
+import { useState } from 'react'
 
 import City from './assets/city.jpg'
 import ListRender from '../components/ListRender'
 import ConditionalRender from '../components/ConditionalRender'
 import ShowUserName from '../components/ShowUserName'
-import { useState } from 'react'
+import CarDetails from '../components/CarDetails'
 
 function App() {
   const name = 'Joaquim'
@@ -28,7 +29,10 @@ function App() {
       <ManageData />
       <ListRender />
       <ConditionalRender />
+      {/* PROPS */}
       <ShowUserName name={userName} />
+      {/* DESTRUCTURING */}
+      <CarDetails brand='Chevrolet' km={20000} color='vermelho' />
     </>
   )
 }
