@@ -13,6 +13,8 @@ import CarDetails from '../components/CarDetails'
 import Fragments from '../components/Fragments'
 import Container from '../components/Container'
 import ExecuteFunction from '../components/ExecuteFunction'
+import Message from '../components/Message'
+import ChangeMessageState from '../components/ChangeMessageState'
 
 function App() {
   /* const name = 'Joaquim' */
@@ -24,9 +26,15 @@ function App() {
     { id: 3, brand: 'Renault', color: 'Azul', newCar: false, km: 89865 },
   ]
 
-  const showMessage = () => (
+  const showMessage = () => {
     console.log('Essa é a minha função!')
-  )
+  }
+
+  const [message, setMessage] = useState('Clique em algum dos botões abaixo')
+
+  const handleMessage = (msg) => {
+    setMessage(msg)
+  }
 
   return (
     <>
@@ -75,6 +83,9 @@ function App() {
       </Container>
       {/* EXECUTAR FUNÇÃO */}
       <ExecuteFunction myFunction={showMessage} />
+      {/* STATE LIFT */}
+      <Message msg={message} />
+      <ChangeMessageState handleMessage={handleMessage} />
     </>
   )
 }
