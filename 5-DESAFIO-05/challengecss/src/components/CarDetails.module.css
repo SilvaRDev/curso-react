@@ -1,0 +1,31 @@
+.vehicle_card {
+  width: 40vw;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 1.2px;
+  border-bottom: 2px solid black;
+}
+
+.vehicle_card > * {
+  margin: 5px 0;
+}
+
+.new_vehicle,
+.used_vehicle {
+  width: 200px;
+  height: 20px;
+  padding: 3px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.new_vehicle {
+  background-color: green;
+  color: white;
+}
+
+.used_vehicle {
+  background-color: red;
+}
