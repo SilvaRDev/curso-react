@@ -13,3 +13,20 @@ body {
   );
   color: white;
 }
+
+button {
+  background-color: #1646a0;
+  color: white;
+  padding: 0 45px;
+  border: 2px solid white;
+  border-radius: 25px;
+  height: 50px;
+  font-weight: bold;
+  font-size: 1.2em;
+  cursor: pointer;
+  transition: .4s;
+}
+
+button:hover {
+  background-color: #0923af;
+}
