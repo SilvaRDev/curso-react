@@ -16,6 +16,10 @@ const MyForm = ({ user }) => {
     e.preventDefault()
     console.log('Enviando o formulário...')
     console.log(name, email)
+
+    /* 7- limpar formulário */
+    setName('')
+    setEmail('')
   }
 
   return (
