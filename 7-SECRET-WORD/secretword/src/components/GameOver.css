@@ -1,0 +1,8 @@
+:root {
+  --cor-ouro: #ECFA00;
+}
+
+h2 span {
+  color: var(--cor-ouro);
+  font-size: 1.5em;
+}
