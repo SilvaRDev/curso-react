@@ -34,6 +34,16 @@
       "id": "2ebe",
       "name": "teste",
       "price": "50"
+    },
+    {
+      "id": "6ee9",
+      "name": "Teclado ",
+      "price": "110"
+    },
+    {
+      "id": "aeb2",
+      "name": "Cadeira ",
+      "price": "200"
     }
   ]
 }
