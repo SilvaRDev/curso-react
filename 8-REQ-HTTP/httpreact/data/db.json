@@ -3,18 +3,37 @@
     {
       "id": 1,
       "name": "Camisa",
-      "Price": 59.9
+      "price": 59.9
     },
     {
       "id": 2,
       "name": "Camisa Vermelha",
-      "Price": 89.9
+      "price": 89.9
     },
     {
       "id": 3,
       "name": "Boné aba reta",
-      "Price": 29.9
+      "price": 29.9
+    },
+    {
+      "id": "d67b",
+      "name": "Teste",
+      "price": "12"
+    },
+    {
+      "id": "0930",
+      "name": "Capa de Chuva",
+      "price": "50.99"
+    },
+    {
+      "id": "0d6a",
+      "name": "Colar",
+      "price": "110"
+    },
+    {
+      "id": "2ebe",
+      "name": "teste",
+      "price": "50"
     }
-    
   ]
 }
