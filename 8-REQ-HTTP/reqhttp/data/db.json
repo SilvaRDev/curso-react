@@ -44,6 +44,26 @@
       "id": "911b",
       "name": "Suporte Monitor",
       "price": "120"
+    },
+    {
+      "id": "eca2",
+      "name": "",
+      "price": ""
+    },
+    {
+      "id": "de94",
+      "name": "Teste",
+      "price": "213"
+    },
+    {
+      "id": "21ed",
+      "name": "teste",
+      "price": "132"
+    },
+    {
+      "id": "26f6",
+      "name": "teste",
+      "price": "132"
     }
   ]
 }
