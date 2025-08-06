@@ -11,7 +11,7 @@ function App() {
   const [products, setProducts] = useState([])
 
   // 4 - Custom Hook
-  const { data: items, httpConfig, loading, loadingPost } = useFetch(url) // Usa o hook que foi criado para exibir os ítens
+  const { data: items, httpConfig, loading, loadingPost, error } = useFetch(url) // Usa o hook que foi criado para exibir os ítens
 
   const [name, setName] = useState('')
   const [price, setPrice] = useState('')
@@ -63,7 +63,8 @@ function App() {
       <h1>Lista de Produtos</h1>
       {/* 6 - Loading */}
       {loading && <p>Carregando dados...</p>}
-      {!loading && (
+      {error && <p>{error}</p>}
+      {!error && (
         <ul>
           {items &&
             items.map(

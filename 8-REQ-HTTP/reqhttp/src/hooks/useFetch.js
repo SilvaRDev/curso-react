@@ -10,20 +10,28 @@ export const useFetch = (url) => {
   const [callFetch, setCallFetch] = useState(false)
 
   // 6 - Loading
-  const [loading, setLoading] = useState(false) 
+  const [loading, setLoading] = useState(false)
   const [loadingPost, setLoadingPost] = useState(false)
+
+  // 7 - Tratando erros
+  const [error, setError] = useState(null)
 
   useEffect(() => {
     const fetchData = async () => {
-
       // 6 - Loading
       setLoading(true)
 
-      const res = await fetch(url) // Pega os dados presentes na API
+      try {
+        const res = await fetch(url) // Pega os dados presentes na API
 
-      const json = await res.json() // Converte o json para objeto js
+        const json = await res.json() // Converte o json para objeto js
 
-      setData(json) // Adiciona os objetos extraídos do fetch.
+        setData(json) // Adiciona os objetos extraídos do fetch.
+      } catch (error) {
+        console.log(error.message)
+
+        setError('Houve um erro ao carregar os dados.')
+      }
 
       setLoading(false)
       setLoadingPost(false)
@@ -38,7 +46,7 @@ export const useFetch = (url) => {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(data)
+      body: JSON.stringify(data),
     })
 
     setMethod(method)
@@ -63,5 +71,5 @@ export const useFetch = (url) => {
     httpRequest()
   }, [config, method, url])
 
-  return { data, httpConfig, loading, loadingPost } // Retorna o estado atual de data, após o processo de requisição/post e a configuração do cabeçalho HTTP
+  return { data, httpConfig, loading, loadingPost, error } // Retorna o estado atual de data, após o processo de requisição/post e a configuração do cabeçalho HTTP
 }
