@@ -11,7 +11,7 @@ function App() {
   const [products, setProducts] = useState([])
 
   // 4 - Custom Hook
-  const { data: items, httpConfig } = useFetch(url) // Usa o hook que foi criado para exibir os ítens
+  const { data: items, httpConfig, loading, loadingPost } = useFetch(url) // Usa o hook que foi criado para exibir os ítens
 
   const [name, setName] = useState('')
   const [price, setPrice] = useState('')
@@ -52,7 +52,7 @@ function App() {
     setProducts((prevProducts) => [...prevProducts, addedProduct]) // Adiciona por meio de um spread operator o produto adicionado pelo usuário em sua view, sem necessidade de atualização da página */
 
     // 5 - Refatorando POST
-    httpConfig(product, "POST")
+    httpConfig(product, 'POST')
 
     setName('')
     setPrice('')
@@ -61,13 +61,22 @@ function App() {
   return (
     <>
       <h1>Lista de Produtos</h1>
-      <ul>
-        {items && items.map((product) => ( // Exibe os ítens que vieram do nosso custom hook
-          <li key={product.id}>
-            {product.name} | R${product.price}
-          </li>
-        ))}
-      </ul>
+      {/* 6 - Loading */}
+      {loading && <p>Carregando dados...</p>}
+      {!loading && (
+        <ul>
+          {items &&
+            items.map(
+              (
+                product // Exibe os ítens que vieram do nosso custom hook
+              ) => (
+                <li key={product.id}>
+                  {product.name} | R${product.price}
+                </li>
+              )
+            )}
+        </ul>
+      )}
       <div className="add-product">
         <form onSubmit={handleSubmit}>
           <label>
@@ -88,7 +97,8 @@ function App() {
               onChange={(e) => setPrice(e.target.value)}
             />
           </label>
-          <input type="submit" value="Enviar" />
+          {loadingPost && <input type="submit" value="Enviando dados..." disabled/>}
+          {!loadingPost && <input type="submit" value="Enviar"/>}
         </form>
       </div>
     </>

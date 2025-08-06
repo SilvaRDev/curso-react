@@ -9,13 +9,24 @@ export const useFetch = (url) => {
   const [method, setMethod] = useState(null)
   const [callFetch, setCallFetch] = useState(false)
 
+  // 6 - Loading
+  const [loading, setLoading] = useState(false) 
+  const [loadingPost, setLoadingPost] = useState(false)
+
   useEffect(() => {
     const fetchData = async () => {
+
+      // 6 - Loading
+      setLoading(true)
+
       const res = await fetch(url) // Pega os dados presentes na API
 
       const json = await res.json() // Converte o json para objeto js
 
       setData(json) // Adiciona os objetos extraídos do fetch.
+
+      setLoading(false)
+      setLoadingPost(false)
     }
 
     fetchData()
@@ -37,6 +48,8 @@ export const useFetch = (url) => {
   useEffect(() => {
     const httpRequest = async () => {
       if (method === 'POST') {
+        setLoadingPost(true)
+
         let fetchOptions = [url, config]
 
         const res = await fetch(...fetchOptions)
@@ -50,5 +63,5 @@ export const useFetch = (url) => {
     httpRequest()
   }, [config, method, url])
 
-  return { data, httpConfig } // Retorna o estado atual de data, após o processo de requisição/post e a configuração do cabeçalho HTTP
+  return { data, httpConfig, loading, loadingPost } // Retorna o estado atual de data, após o processo de requisição/post e a configuração do cabeçalho HTTP
 }
