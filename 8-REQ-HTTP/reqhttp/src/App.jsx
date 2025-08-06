@@ -11,7 +11,7 @@ function App() {
   const [products, setProducts] = useState([])
 
   // 4 - Custom Hook
-  const { data: items } = useFetch(url) // Usa o hook que foi criado para exibir os ítens
+  const { data: items, httpConfig } = useFetch(url) // Usa o hook que foi criado para exibir os ítens
 
   const [name, setName] = useState('')
   const [price, setPrice] = useState('')
@@ -38,7 +38,7 @@ function App() {
       price,
     }
 
-    const res = await fetch(url, {
+    /* const res = await fetch(url, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -49,7 +49,10 @@ function App() {
     // 3 - Carregamento dinâmico
     const addedProduct = await res.json() // Transforma o objeto em json
 
-    setProducts((prevProducts) => [...prevProducts, addedProduct]) // Adiciona por meio de um spread operator o produto adicionado pelo usuário em sua view, sem necessidade de atualização da página
+    setProducts((prevProducts) => [...prevProducts, addedProduct]) // Adiciona por meio de um spread operator o produto adicionado pelo usuário em sua view, sem necessidade de atualização da página */
+
+    // 5 - Refatorando POST
+    httpConfig(product, "POST")
 
     setName('')
     setPrice('')

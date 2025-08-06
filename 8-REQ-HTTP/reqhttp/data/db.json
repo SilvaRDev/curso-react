@@ -34,6 +34,16 @@
       "id": "8cc9",
       "name": "Abajur",
       "price": "59.90"
+    },
+    {
+      "id": "ecad",
+      "name": "Mouse",
+      "price": "60"
+    },
+    {
+      "id": "8ae3",
+      "name": "Outro teste",
+      "price": "70"
     }
   ]
 }
