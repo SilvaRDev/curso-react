@@ -1,49 +1,9 @@
 {
   "products": [
     {
-      "id": "1",
-      "name": "Camisa",
-      "price": 59.9
-    },
-    {
-      "id": "2",
-      "name": "Calça vermelha",
-      "price": 90
-    },
-    {
-      "id": "3",
-      "name": "Boné aba reta",
-      "price": 29.9
-    },
-    {
-      "id": "422a",
+      "id": "0e3a",
       "name": "teste",
-      "price": "12"
-    },
-    {
-      "id": "c79b",
-      "name": "Capa de chuva",
-      "price": "50.50"
-    },
-    {
-      "id": "ec51",
-      "name": "Teclado",
-      "price": "110"
-    },
-    {
-      "id": "8cc9",
-      "name": "Abajur",
-      "price": "59.90"
-    },
-    {
-      "id": "ecad",
-      "name": "Mouse",
-      "price": "60"
-    },
-    {
-      "id": "911b",
-      "name": "Suporte Monitor",
-      "price": "120"
+      "price": "123"
     }
   ]
 }

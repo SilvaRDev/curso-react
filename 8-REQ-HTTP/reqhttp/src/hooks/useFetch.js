@@ -40,21 +40,40 @@ export const useFetch = (url) => {
     fetchData()
   }, [url, callFetch])
 
-  const httpConfig = (data, method) => {
-    setConfig({
-      method,
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data),
-    })
+  // 8 - Desafio 6
+  const [itemId, setItemId] = useState(null)
 
-    setMethod(method)
+  const httpConfig = (data, method) => {
+    if (method === 'POST') {
+      setConfig({
+        method,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      })
+
+      setMethod(method)
+    } else if (method === 'DELETE') {
+      setConfig({
+        method,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      })
+
+      setMethod(method)
+      setItemId(data)
+    }
   }
 
   // 5 - Refatorando POST
   useEffect(() => {
     const httpRequest = async () => {
+
+      let json
+
       if (method === 'POST') {
         setLoadingPost(true)
 
@@ -62,9 +81,19 @@ export const useFetch = (url) => {
 
         const res = await fetch(...fetchOptions)
 
-        const json = await res.json()
+        json = await res.json()
 
         setCallFetch(json)
+      } else if (method === 'DELETE') {
+
+        const deleteUrl = `${url}/${itemId}` 
+
+        const res = await fetch(deleteUrl, config)
+
+        json = await res.json()
+
+        setCallFetch(json)
+
       }
     }
 

@@ -16,6 +16,9 @@ function App() {
   const [name, setName] = useState('')
   const [price, setPrice] = useState('')
 
+  const [removeItem, setRemoveItem] = useState('')
+  const [id, setId] = useState('')
+
   // 1 - Resgatando dados
   /* useEffect(() => {
     async function fetchData() {
@@ -58,6 +61,13 @@ function App() {
     setPrice('')
   }
 
+  // Remoção de produtos
+  const handleRemove = (id) => {
+    httpConfig(id, 'DELETE')
+
+    console.log(`O ítem de id ${id} foi removido com sucesso!`)
+  }
+
   return (
     <>
       <h1>Lista de Produtos</h1>
@@ -73,6 +83,7 @@ function App() {
               ) => (
                 <li key={product.id}>
                   {product.name} | R${product.price}
+                  <button onClick={() => handleRemove(product.id)}>Excluir</button>
                 </li>
               )
             )}
@@ -80,6 +91,7 @@ function App() {
       )}
       <div className="add-product">
         <form onSubmit={handleSubmit}>
+          <input type="hidden" name="Add" />
           <label>
             Nome:
             <input
@@ -98,8 +110,10 @@ function App() {
               onChange={(e) => setPrice(e.target.value)}
             />
           </label>
-          {loadingPost && <input type="submit" value="Enviando dados..." disabled/>}
-          {!loadingPost && <input type="submit" value="Enviar"/>}
+          {loadingPost && (
+            <input type="submit" value="Enviando dados..." disabled />
+          )}
+          {!loadingPost && <input type="submit" value="Enviar" />}
         </form>
       </div>
     </>
