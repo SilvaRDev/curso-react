@@ -2,16 +2,22 @@ import './App.css'
 
 import { useState, useEffect } from 'react'
 
+// 4 - Custom Hook
+import { useFetch } from './hooks/useFetch'
+
 const url = 'http://localhost:3000/products'
 
 function App() {
   const [products, setProducts] = useState([])
 
+  // 4 - Custom Hook
+  const { data: items } = useFetch(url) // Usa o hook que foi criado para exibir os ítens
+
   const [name, setName] = useState('')
   const [price, setPrice] = useState('')
 
   // 1 - Resgatando dados
-  useEffect(() => {
+  /* useEffect(() => {
     async function fetchData() {
       const res = await fetch(url) // Busca os dados da API (no caso, os objetos presentes na API)
 
@@ -21,7 +27,7 @@ function App() {
     }
 
     fetchData() // Executa o bloco acima
-  }, [])
+  }, []) */
 
   // 2 - add de produtos
   const handleSubmit = async (e) => {
@@ -53,7 +59,7 @@ function App() {
     <>
       <h1>Lista de Produtos</h1>
       <ul>
-        {products.map((product) => (
+        {items && items.map((product) => ( // Exibe os ítens que vieram do nosso custom hook
           <li key={product.id}>
             {product.name} | R${product.price}
           </li>
