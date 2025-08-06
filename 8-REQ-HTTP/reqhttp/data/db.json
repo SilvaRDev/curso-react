@@ -1,19 +1,39 @@
 {
   "products": [
     {
-      "id": 1,
+      "id": "1",
       "name": "Camisa",
       "price": 59.9
     },
     {
-      "id": 2,
+      "id": "2",
       "name": "Calça vermelha",
       "price": 90
     },
     {
-      "id": 3,
+      "id": "3",
       "name": "Boné aba reta",
       "price": 29.9
+    },
+    {
+      "id": "422a",
+      "name": "teste",
+      "price": "12"
+    },
+    {
+      "id": "c79b",
+      "name": "Capa de chuva",
+      "price": "50.50"
+    },
+    {
+      "id": "ec51",
+      "name": "Teclado",
+      "price": "110"
+    },
+    {
+      "id": "8cc9",
+      "name": "Abajur",
+      "price": "59.90"
     }
   ]
 }
