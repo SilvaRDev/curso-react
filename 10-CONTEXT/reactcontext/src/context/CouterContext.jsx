@@ -1,10 +1,11 @@
-// 1 - Criar contexto
+// 1 - Criando Contexto
 import { createContext, useState } from 'react'
 
 export const CounterContext = createContext()
 
-// 2 - Criar provider
-export const CounterContextProvider = (({children}) => {
+// 2 - Criando Provider
+export const CounterContextProvider = ({children}) => {
+
   const [counter, setCounter] = useState(5)
 
   return (
@@ -13,4 +14,4 @@ export const CounterContextProvider = (({children}) => {
     </CounterContext.Provider>
   )
 
-})
+}

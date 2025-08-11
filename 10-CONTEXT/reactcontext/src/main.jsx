@@ -3,7 +3,7 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
 
-import { CounterContextProvider } from './context/CounterContext.jsx'
+import { CounterContextProvider } from './context/CouterContext.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -11,5 +11,5 @@ createRoot(document.getElementById('root')).render(
     <CounterContextProvider>
       <App />
     </CounterContextProvider>
-  </StrictMode>,
+  </StrictMode>
 )
