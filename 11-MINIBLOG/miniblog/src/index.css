@@ -8,6 +8,7 @@ body {
 input::placeholder,
 textarea::placeholder {
   font-family: "Montserrat", sans-serif;
+  color: #AAA;
 }
 
 input:focus,
@@ -30,4 +31,82 @@ nav button {
 a:hover,
 nav button:hover {
   color: #BBB;
+}
+
+/* form styles */
+form {
+  max-width: 40%;
+  margin: 0 auto;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1px;
+}
+
+label span {
+  margin-bottom: .3em;
+  font-weight: bold;
+  text-align: left;
+}
+
+input,
+textarea {
+  box-sizing: border-box;
+  border: none;
+  border-bottom: 1px solid #CCC;
+  padding: .8em 0;
+  background-color: transparent;
+}
+
+.btn {
+  background-color: #1A8918;
+  color: white;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 10px;
+  width: 120px;
+  font-weight: bold;
+  border: none;
+  padding: 10px 15px;
+  font-size: 1em;
+}
+
+.btn.btn-dark {
+  background-color: black;
+  border-radius: 0;
+}
+
+.btn.btn-outline {
+  background-color: transparent;
+  border-radius: 0;
+  color: black;
+  border: 1px solid black;
+  padding: 7px 30px;
+}
+
+.btn:hover {
+  background-color: #0F730C;
+  color: white;
+}
+
+.btn.btn-outline:hover {
+  background-color: black;
+}
+
+.btn.btn-danger:hover {
+  background-color: #DC3545;
+}
+
+button[disabled] {
+  background-color: #AAA;
+}
+
+.container .error {
+  color: #721C24;
+  background-color: #F8D7DA;
+  border: 1px solid #F5C6CB;
+  padding: 5px;
+  border-radius: 5px;
 }
