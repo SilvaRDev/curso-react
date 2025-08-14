@@ -1,4 +1,4 @@
-import { db } from '../firebase/config'
+import { db, app } from '../firebase/config'
 
 import {
   getAuth,
@@ -18,7 +18,7 @@ export const useAuthentication = () => {
   // deal with memoty leak
   const [canceled, setCanceled] = useState(false)
 
-  const auth = getAuth()
+  const auth = getAuth(app)
 
   function checkIfIsCancelled() {
     if (canceled) {
