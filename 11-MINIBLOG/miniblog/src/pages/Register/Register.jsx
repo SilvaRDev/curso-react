@@ -61,7 +61,7 @@ const Register = () => {
             type="email"
             name="email"
             required
-            placeholder="Insira seu melhor e-mail"
+            placeholder="Insira seu melhor E-mail"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />

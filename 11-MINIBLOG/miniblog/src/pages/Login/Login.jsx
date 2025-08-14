@@ -9,7 +9,7 @@ const Login = () => {
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
 
-  const { createUser, authError, loading } = useAuthentication()
+  const { login, authError, loading } = useAuthentication()
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -21,8 +21,16 @@ const Login = () => {
       password,
     }
 
-    const res = await createUser(user)
+    const res = await login(user)
+
+    console.log(res)
   }
+
+  useEffect(() => {
+    if (authError) {
+      setError(authError)
+    }
+  })
 
   return (
     <div className={styles.login}>
@@ -36,7 +44,7 @@ const Login = () => {
             type="email"
             name="email"
             required
-            placeholder="Insira seu melhor e-mail"
+            placeholder="Insira seu melhor E-mail"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
@@ -54,7 +62,7 @@ const Login = () => {
         </label>
         {!loading && (
           <button type="submit" className="btn">
-            Cadastrar
+            Entrar
           </button>
         )}
         {loading && (
