@@ -16,28 +16,44 @@ const CreatePost = () => {
 
   const {insertDocument, response} = useInsertDocument('posts')
 
+  const navigate = useNavigate()
+
   const handleSubmit = (e) => {
     e.preventDefault()
     setFormError('')
 
     // Validate image URL
+    try {
+      new URL(image)
+      setFormError(null)
+    } catch (error) {
+      setFormError('A imagem precisa ser uma URL.')
+      return
+    }
 
     // Criar o array de tags
+    const tagsArray = tags.split(',').map((tag) => tag.trim().toLowerCase())
 
     // Checar todos os valores
+    if(!title || !image || !tags || !body) {
+      setFormError('Por favor, preencha todos os campos.')
+    }
 
-    console.log(user)
-
+    if (formError) {
+      return
+    } 
+      
     insertDocument({
       title,
       image,
       body,
-      tags,
+      tagsArray,
       uid: user.uid,
       createdBy: user.displayName,
     })
 
     // Redirect to home page
+    navigate('/')
   }
 
   return (
@@ -46,6 +62,7 @@ const CreatePost = () => {
       <p>Escreva sobre o que quiser e compartilhe o seu conhecimento!</p>
       <form onSubmit={handleSubmit}>
         {response.error && <p className='error'>{response.error}</p>}
+        {formError && <p className='error'>{formError}</p>}
         <label>
           <span>Título:</span>
           <input
