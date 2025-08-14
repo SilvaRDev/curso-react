@@ -35,7 +35,6 @@ export const useInsertDocument = (docCollection) => {
   const insertDocument = async (document) => {
     checkCancelBeforeDispatch({
       type: 'LOADING',
-      payload: insertedDocument,
     })
 
     try {
