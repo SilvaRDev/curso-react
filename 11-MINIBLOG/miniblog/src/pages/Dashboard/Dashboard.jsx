@@ -4,14 +4,13 @@ import { Link } from 'react-router-dom'
 
 // Hooks
 import { useAuthValue } from '../../context/authContext'
-import { useFetchDocument } from '../../hooks/useFetchDocument'
+import { useFetchDocuments } from '../../hooks/useFetchDocuments'
 
 const Dashboard = () => {
   const { user } = useAuthValue()
   const uid = user.uid
 
-  // User posts
-  const posts = []
+  const { documents: posts, loading } = useFetchDocuments('posts', null, uid)
 
   return (
     <div>
@@ -29,6 +28,8 @@ const Dashboard = () => {
           <p>Tem posts</p>
         </div>
       )}
+
+      {posts && posts.map((post) => <h3>{post.title}</h3>)}
     </div>
   )
 }
