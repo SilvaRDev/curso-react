@@ -4,7 +4,7 @@ import {
   collection,
   query,
   orderBy,
-  onSnapShot,
+  onSnapshot,
   where
 } from 'firebase/firestore'
 
