@@ -8,7 +8,7 @@ pnpm-debug.log*
 lerna-debug.log*
 
 node_modules
-src/firebase
+src/firebase/config.js
 dist
 dist-ssr
 *.local
