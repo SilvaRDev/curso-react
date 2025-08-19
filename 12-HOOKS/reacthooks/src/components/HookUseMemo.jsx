@@ -11,6 +11,7 @@ const HookUseMemo = () => {
     console.log('Premium numbers foi alterado!')
   }, [premiumNumbers])
 
+  // Teste
   return (
     <div>
       <h2>useMemo</h2>
