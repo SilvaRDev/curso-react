@@ -24,7 +24,18 @@ const HookUseEffect = () => {
     if (anotherNumber > 0) {
       console.log('Sou executado apenas quando o anotherNumber muda.')
     }
-  }, [anotherNumber]) 
+  }, [anotherNumber])
+
+  // 4 - Cleanup do useEffect
+  useEffect(() => {
+    /* const timer = setTimeout(() => {
+      console.log('Olá, mundo!')
+
+      setAnotherNumber(anotherNumber + 1)
+    }, 2000)
+
+    return () => clearTimeout(timer) */
+  }, [anotherNumber])
 
   return (
     <div>
@@ -32,7 +43,9 @@ const HookUseEffect = () => {
       <p>Número: {number}</p>
       <button onClick={changeSomething}>Executar!</button>
       <p>Another number: {anotherNumber}</p>
-      <button onClick={() => setAnotherNumber(anotherNumber + 1)}>Mudar anotherNumber</button>
+      <button onClick={() => setAnotherNumber(anotherNumber + 1)}>
+        Mudar anotherNumber
+      </button>
       <hr />
     </div>
   )
