@@ -25,7 +25,7 @@ const HookUseReducer = () => {
         return [...state, newTask]
       case 'DELETE':
         return state.filter((task) => task.id !== action.id)
-      default: 
+      default:
         return state
     }
   }
@@ -59,7 +59,9 @@ const HookUseReducer = () => {
       </form>
       <ul>
         {tasks.map((task) => (
-          <li key={task.id} onDoubleClick={() => removeTask(task.id)}>{task.text}</li>
+          <li key={task.id} onDoubleClick={() => removeTask(task.id)}>
+            {task.text}
+          </li>
         ))}
       </ul>
       <hr />
