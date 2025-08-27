@@ -15,14 +15,13 @@ const generateToken = (id) => {
 
 // Register User and sign in
 const register = async (req, res) => {
-
   const { name, email, password } = req.body
 
   // check if user exists
-  const user = await User.findOne({email})
+  const user = await User.findOne({ email })
 
-  if(user) {
-    res.status(422).json({errors: ['Por favor, utilizar outro E-Mail.']})
+  if (user) {
+    res.status(422).json({ errors: ['Por favor, utilizar outro E-Mail.'] })
     return
   }
 
@@ -34,38 +33,38 @@ const register = async (req, res) => {
   const newUser = await User.create({
     name,
     email,
-    password: passwordHash
+    password: passwordHash,
   })
 
   // If user was created succesfully, return the token
-  if(!newUser) {
-    res.status(422).json({errors: ['Ocorreu um erro, tente novamente mais tarde.']})
+  if (!newUser) {
+    res
+      .status(422)
+      .json({ errors: ['Ocorreu um erro, tente novamente mais tarde.'] })
     return
   }
 
   res.status(201).json({
     _id: newUser._id,
-    token: generateToken(newUser._id)
+    token: generateToken(newUser._id),
   })
-
 }
 
 // Sign User in
-const login = async(req, res) => {
-
+const login = async (req, res) => {
   const { email, password } = req.body
 
-  const user = await User.findOne({email})
+  const user = await User.findOne({ email })
 
   // Check if user exists
-  if(!user) {
-    res.status(404).json({errors: ['Usuário não encontrado.']})
+  if (!user) {
+    res.status(404).json({ errors: ['Usuário não encontrado.'] })
     return
   }
 
   // Check if password matches
-  if(!(await bcrypt.compare(password, user.password))) {
-    res.status(422).json({errors: ['Senha inválida.']})
+  if (!(await bcrypt.compare(password, user.password))) {
+    res.status(422).json({ errors: ['Senha inválida.'] })
     return
   }
 
@@ -73,28 +72,24 @@ const login = async(req, res) => {
   res.status(201).json({
     _id: user._id,
     profileImage: user.profileImage,
-    token: generateToken(user._id)
+    token: generateToken(user._id),
   })
-
 }
 
-// Get current logged in user 
-const getCurrentUser = async(req, res) => {
-
-  const user = req.user 
+// Get current logged in user
+const getCurrentUser = async (req, res) => {
+  const user = req.user
 
   res.status(200).json(user)
-
 }
 
 // Update an user
 const update = async (req, res) => {
-  
-  const { name, password, bio } = req.body 
+  const { name, password, bio } = req.body
 
-  let profileImage = null 
+  let profileImage = null
 
-  if(req.file) {
+  if (req.file) {
     profileImage = req.file.filename
   }
 
@@ -102,11 +97,11 @@ const update = async (req, res) => {
 
   const user = await User.findById(reqUser._id).select('-password')
 
-  if(name) {
-    user.name = name 
+  if (name) {
+    user.name = name
   }
 
-  if(password) {
+  if (password) {
     // Generate password hash
     const salt = await bcrypt.genSalt()
     const passwordHash = await bcrypt.hash(password, salt)
@@ -114,23 +109,43 @@ const update = async (req, res) => {
     user.password = passwordHash
   }
 
-  if(profileImage) {
+  if (profileImage) {
     user.profileImage = profileImage
   }
 
-  if(bio) {
+  if (bio) {
     user.bio = bio
   }
 
   await user.save()
 
   res.status(200).json(user)
+}
 
+// Get user by id
+const getUserById = async (req, res) => {
+  const { id } = req.params
+
+  try {
+    const user = await User.findById(id).select('-password')
+
+    // Check if user exists
+    if (!user) {
+      res.status(404).json({ errors: ['Usuário não encontrado.'] })
+      return
+    }
+
+    res.status(200).json(user)
+  } catch (error) {
+    res.status(404).json({ errors: ['Usuário não encontrado.'] })
+    return
+  }
 }
 
 module.exports = {
   register,
   login,
   getCurrentUser,
-  update
+  update,
+  getUserById,
 }
