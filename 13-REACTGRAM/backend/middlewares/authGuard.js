@@ -1,11 +1,11 @@
 const User = require('../models/User')
 const jwt = require('jsonwebtoken')
-const jwtSecret = process.env.JWT_SECRET 
+const jwtSecret = process.env.JWT_PASS 
 
 const authGuard = async (req, res, next) => {
 
-  const authHeader = req.headers('authorization')
-  const token = authHeader && authHeader.split('')[1]
+  const authHeader = req.headers['authorization']
+  const token = authHeader && authHeader.split(' ')[1]
 
   // Check if header has a token
   if(!token) return res.status(401).json({errors: 'Acesso negado.'})
@@ -15,7 +15,7 @@ const authGuard = async (req, res, next) => {
 
     const verified = jwt.verify(token, jwtSecret)
 
-    req.user = await user.findById(verified.id).select('-password')
+    req.user = await User.findById(verified.id).select('-password')
 
     next()
 
