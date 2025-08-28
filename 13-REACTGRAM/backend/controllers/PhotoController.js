@@ -110,7 +110,7 @@ const updatePhoto = async (req, res) => {
 
   const reqUser = req.user
 
-  const photo = await Photo.findById(id)
+  const photo = await Photo.findById({_id: id})
 
   // Check if photo exists
   if (!photo) {
