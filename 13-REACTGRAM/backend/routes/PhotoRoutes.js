@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router()
 
 // Controller
-const { InsertPhoto, deletePhoto } = require('../controllers/PhotoController')
+const { InsertPhoto, deletePhoto, getAllPhotos } = require('../controllers/PhotoController')
 
 // Middlewares
 const { photoInsertValidation } = require('../middlewares/PhotoValidation')
@@ -20,5 +20,6 @@ router.post(
   InsertPhoto
 )
 router.delete('/:id', authGuard, deletePhoto)
+router.get('/', authGuard, getAllPhotos)
 
 module.exports = router
