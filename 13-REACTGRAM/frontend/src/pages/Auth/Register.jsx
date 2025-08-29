@@ -18,7 +18,7 @@ const Register = () => {
     <div>
       <h2>ReactGram</h2>
       <p className="subtitle">Cadastre-se para ver as fotos dos seus amigos</p>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} >
         <input type="text" placeholder='Nome' />
         <input type="email" placeholder='E-mail' />
         <input type="password" placeholder='Senha' />
