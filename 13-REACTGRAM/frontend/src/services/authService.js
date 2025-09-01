@@ -15,10 +15,9 @@ const register = async (data) => {
     return json
   } catch (error) {
     console.log(error)
-    return error 
+    return error
   }
 }
-
 
 // Logout an user
 const logout = () => {
@@ -26,24 +25,22 @@ const logout = () => {
 }
 
 // Sign in an user
-const login = async(data) => {
-
+const login = async (data) => {
   const config = requestConfig('POST', data)
 
   try {
-
     const res = await fetch(api + '/users/login', config)
-    const json = await res.json()
+      .then((res) => res.json())
+      .catch((err) => err)
 
-      if (res.ok) {
-        localStorage.setItem('user', JSON.stringify(res))
-      }
+    if (res._id) {
+      localStorage.setItem('user', JSON.stringify(res))
+    }
 
-      return json
+    return res
   } catch (error) {
     console.log(error)
   }
-
 }
 
 const authService = {
