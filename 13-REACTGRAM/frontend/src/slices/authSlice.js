@@ -29,27 +29,27 @@ export const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
-    reset: (state) => {
-      state.loading = false 
-      state.error = false 
+    reset: (state) => { 
+      state.loading = false  
+      state.error = false  
       state.success = false
-    }
+    } 
   },
-  extraReducers: (builder) => {
-    builder.addCase(register.pending, (state) => {
+  extraReducers: (builder) => { 
+    builder.addCase(register.pending, (state) => { 
       state.loading = true 
-      state.error = false
-    })
-    .addCase(register.fulfilled, (state, action) => {
+      state.error = false 
+    }) 
+    .addCase(register.fulfilled, (state, action) => { 
       state.loading = false 
-      state.success = true
+      state.success = true 
       state.error = null 
       state.user = action.payload 
     })
-    .addCase(register.rejected, (state, action) => {
-      state.loading = false
-      state.error = action.payload
-      state.user = null
+    .addCase(register.rejected, (state, action) => { 
+      state.loading = false 
+      state.error = action.payload 
+      state.user = null 
     })
   }
 })
