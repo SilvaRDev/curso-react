@@ -19,5 +19,5 @@ export const useAuth = () => {
 
   }, [user])
 
-  return [ auth, loading ]
+  return { auth, loading }
 }
