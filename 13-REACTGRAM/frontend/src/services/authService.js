@@ -19,14 +19,37 @@ const register = async (data) => {
   }
 }
 
+// Sign in an user
+const login = async(data) => {
+
+  const config = requestConfig('POST', data)
+
+  try {
+
+    const res = await fetch(api + '/users/login', config)
+    const json = await res.json()
+
+      if (res.ok) {
+        localStorage.setItem('user', JSON.stringify(res))
+      }
+
+      return json
+  } catch (error) {
+    console.log(error)
+  }
+
+}
+
 // Logout an user
 const logout = () => {
   localStorage.removeItem('user')
 }
 
+
 const authService = {
   register,
-  logout
+  logout,
+  login
 }
 
 export default authService
