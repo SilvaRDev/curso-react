@@ -1,7 +1,8 @@
 import './Auth.css'
 
-// Componnets
+// Components
 import { Link } from 'react-router-dom'
+import Message from '../../components/Message'
 
 // Hooks
 import { useState, useEffect } from 'react'
@@ -40,6 +41,7 @@ const Register = () => {
 
   return (
     <div id="register">
+      {error && <Message msg={error} type="error" />}
       <h2>ReactGram</h2>
       <p className="subtitle">Cadastre-se para ver as fotos dos seus amigos</p>
       <form onSubmit={handleSubmit}>
@@ -67,7 +69,8 @@ const Register = () => {
           onChange={(e) => setConfirmPassword(e.target.value)}
           value={confirmPassword || ''}
         />
-        <input type="submit" value="Cadastrar" />
+        {!loading && <input type="submit" value="Cadastrar" />}
+        {loading && <input type="submit" value="Aguarde..." disabled />}
       </form>
       <p>
         Já tem conta? <Link to="/login">Clique aqui</Link>
