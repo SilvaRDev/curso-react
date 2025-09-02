@@ -14,10 +14,11 @@ import { useParams } from 'react-router-dom'
 
 // redux
 
+
 const Profile = () => {
   return (
     <div>
-      profile
+      Profile
     </div>
   )
 }
