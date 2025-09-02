@@ -54,7 +54,7 @@ const Profile = () => {
       {id === userAuth._id && (
         <>
           <div className="new-photo" ref={newPhotoForm}>
-            <h3>Compartilhe algum momento seu</h3>
+            <h3>Compartilhe algum momento seu:</h3>
             <form onSubmit={submitHandle}>
               <label>
                 <span>Título para a foto</span>
