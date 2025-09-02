@@ -1,7 +1,7 @@
 const { body } = require('express-validator')
 
 const photoInsertValidation = () => {
-  return (
+  return [
     body('title')
       .not()
       .equals('undefined')
@@ -16,7 +16,7 @@ const photoInsertValidation = () => {
       }
       return true
     })
-  )
+  ]
 }
 
 const photoUpdateValidation = () => {
