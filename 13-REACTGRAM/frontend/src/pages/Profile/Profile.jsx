@@ -66,9 +66,13 @@ const Profile = () => {
 
     formData.append('photo', photoFormData)
 
-    dispatch(publishPhoto(formData))
-
-    setTitle('')
+    dispatch(publishPhoto(formData)).then((res) => {
+      if(!res.error) {
+        setTitle('')
+        setImage('')
+        e.target.reset()
+      }
+    })
 
     setTimeout(() => {
       dispatch(resetMessage())
