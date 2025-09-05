@@ -34,6 +34,8 @@ const commentValidation = () => {
     body('comment')
       .isString()
       .withMessage('Adicione um comentário para continuar.')
+      .isLength({ min: 1 })
+      .withMessage('Adicione um comentário para interagir!')
   ]
 }
 
