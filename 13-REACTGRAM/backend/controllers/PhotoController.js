@@ -66,7 +66,7 @@ const deletePhoto = async (req, res) => {
 // Get all photos
 const getAllPhotos = async (req, res) => {
   const photos = await Photo.find({})
-    .sort([['createdAt', -1]])
+    .sort({'createdAt': -1})
     .exec()
 
   return res.status(200).json(photos)
@@ -211,7 +211,7 @@ const searchPhotos = async (req, res) => {
   const { q } = req.query 
 
   const regex = new RegExp(q, 'i');
-  const photos = await Photo.find({ title: regex }).exec();
+  const photos = await Photo.find({ title: regex }).sort({ createdAt: -1 }).exec();
 
   res.status(200).json(photos)
 

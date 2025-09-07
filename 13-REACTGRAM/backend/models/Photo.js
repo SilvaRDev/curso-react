@@ -11,7 +11,7 @@ const photoSchema = new Schema(
     userName: String,
   },
   {
-    timeStamps: true
+    timestamps: true
   }
 )
 
