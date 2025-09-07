@@ -1,3 +1,4 @@
+import { createAsyncThunk } from '@reduxjs/toolkit'
 import { api, requestConfig } from '../utils/config'
 
 // Publish an user photo
@@ -139,9 +140,9 @@ const searchPhotos = async(query, token) => {
 
   try {
     
-    const res = await fetch(api + '/photos/search/?q=' + query )
+    const res = await fetch(api + '/photos/search?q=' + query, config)
       .then((res) => res.json())
-      .catch((err) => err)
+      .catch((err) => err) 
 
     return res
   } catch (error) {
