@@ -1,5 +1,8 @@
 import './App.css'
 
+// 4 - Importação de componente
+import FirstComponent from './components/FirstComponent'
+
 function App() {
   // 1 - Variáveis
   const name: string = 'Rafael'
@@ -22,6 +25,7 @@ function App() {
         </div>
       )}
       <h3>{userGreeting(name)}</h3>
+      <FirstComponent />
     </>
   )
 }
