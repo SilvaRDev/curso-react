@@ -3,6 +3,10 @@ import './App.css'
 // 4 - Importação de componente
 import FirstComponent from './components/FirstComponent'
 
+// 5 - Desestruturando Props
+import SecondComponent from './components/SecondComponent'
+import Desctructuring from './components/Desctructuring'
+
 function App() {
   // 1 - Variáveis
   const name: string = 'Rafael'
@@ -26,6 +30,19 @@ function App() {
       )}
       <h3>{userGreeting(name)}</h3>
       <FirstComponent />
+      <SecondComponent name="Teste" />
+      <Desctructuring
+        title="Meu título"
+        content="Post de teste"
+        commentsQty={15}
+        tags={['javascript', 'react', 'typescript']}
+      />
+      <Desctructuring
+        title="Outro comentário"
+        content="Mais um comentário de teste, gerado em um componente feito em tsx."
+        commentsQty={15}
+        tags={['python', 'php']}
+      />
     </>
   )
 }
