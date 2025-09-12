@@ -5,7 +5,7 @@ import FirstComponent from './components/FirstComponent'
 
 // 5 - Desestruturando Props
 import SecondComponent from './components/SecondComponent'
-import Desctructuring from './components/Desctructuring'
+import Desctructuring, { Category } from './components/Desctructuring'
 
 // 6 - useState
 import State from './components/State'
@@ -39,12 +39,14 @@ function App() {
         content="Post de teste"
         commentsQty={15}
         tags={['javascript', 'react', 'typescript']}
+        category={Category.P}
       />
       <Desctructuring
         title="Outro comentário"
         content="Mais um comentário de teste, gerado em um componente feito em tsx."
         commentsQty={15}
         tags={['python', 'php']}
+        category={Category.TS}
       />
       <State />
     </>
