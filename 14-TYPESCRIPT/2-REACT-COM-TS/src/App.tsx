@@ -11,6 +11,9 @@ import Desctructuring, { Category } from './components/Desctructuring'
 import State from './components/State'
 import { createContext } from 'react'
 
+// 11 - Usando contexto
+import Context from './components/Context'
+
 // 9 - Type
 type textOrNull = string | null
 
@@ -42,7 +45,7 @@ function App() {
 
   /* mySecondText = 'Opa' */
 
-  const testandoFixed: fixed = 'Isso'
+  // const testandoFixed: fixed = 'Isso'
 
   // 10 - Context API
   const contextValue: IAppContext = {
@@ -86,6 +89,7 @@ function App() {
         {mySecondText &&
           <p>Tem texto na variável.</p>
         }
+        <Context />
       </>
     </AppContext.Provider>
   )
