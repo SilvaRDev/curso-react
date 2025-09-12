@@ -7,6 +7,9 @@ import FirstComponent from './components/FirstComponent'
 import SecondComponent from './components/SecondComponent'
 import Desctructuring from './components/Desctructuring'
 
+// 6 - useState
+import State from './components/State'
+
 function App() {
   // 1 - Variáveis
   const name: string = 'Rafael'
@@ -43,6 +46,7 @@ function App() {
         commentsQty={15}
         tags={['python', 'php']}
       />
+      <State />
     </>
   )
 }
