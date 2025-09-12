@@ -10,6 +10,11 @@ import Desctructuring, { Category } from './components/Desctructuring'
 // 6 - useState
 import State from './components/State'
 
+// 9 - Type
+type textOrNull = string | null
+
+type fixed = 'Isso' | 'Ou' | 'Aquilo'
+
 function App() {
   // 1 - Variáveis
   const name: string = 'Rafael'
@@ -20,6 +25,14 @@ function App() {
   const userGreeting = (name: string): string => {
     return `Olá, ${name}!`
   }
+
+  // 9 - Type
+  const myText: textOrNull = 'tem algum texto aqui.'
+  let mySecondText: textOrNull = null
+
+  /* mySecondText = 'Opa' */
+
+  const testandoFixed: fixed = 'Isso'
 
   return (
     <>
@@ -49,6 +62,12 @@ function App() {
         category={Category.TS}
       />
       <State />
+      {myText && 
+        <p>Tem texto na variável</p>
+      }
+      {mySecondText &&
+        <p>Tem texto na variável.</p>
+      }
     </>
   )
 }
